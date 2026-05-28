@@ -1,5 +1,6 @@
 package com.universidad.pruebas;
 
+import com.universidad.pruebas.controller.TareaController;
 import com.universidad.pruebas.model.Tarea;
 import com.universidad.pruebas.service.TareaService;
 import jakarta.persistence.EntityNotFoundException;
@@ -14,7 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(TareaControllerTest.class)
+@WebMvcTest(TareaController.class)
 class TareaControllerTest {
     @Autowired
     MockMvc mockMvc;

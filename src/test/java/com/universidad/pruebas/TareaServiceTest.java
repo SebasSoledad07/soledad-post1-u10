@@ -44,4 +44,15 @@ class TareaServiceTest {
         when(repo.findById(99L)).thenReturn(Optional.empty());
         assertThrows(EntityNotFoundException.class, () -> service.buscarPorId(99L));
     }
+
+    @Test
+    void completar_cambiaEstadoYGuarda() {
+        Tarea t = new Tarea(); t.setId(5L); t.setTitulo("Ir al gym"); t.setCompletada(false);
+        when(repo.findById(5L)).thenReturn(Optional.of(t));
+        when(repo.save(any())).thenAnswer(inv -> inv.getArgument(0));
+
+        Tarea resultado = service.completar(5L);
+        assertThat(resultado.isCompletada()).isTrue();
+        verify(repo).save(t);
+    }
 }
